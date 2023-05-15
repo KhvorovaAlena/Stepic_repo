@@ -18,7 +18,7 @@ class ProductPage(BasePage):
             EC.visibility_of_element_located(ProductPageLocators.ALERT_WITH_PRODUCT_PRICE))
         product_price = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE).get_attribute("textContent")
         product_price_in_cart = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE_IN_CART).get_attribute("textContent")
-        assert product_price in product_price_in_cart, "Product price does not equal with cart price"
+        assert product_price == product_price_in_cart, f"Product price {product_price} does not equal with cart price {product_price_in_cart}"
         print(f"Product price {product_price}, product price in the cart {product_price_in_cart}")
 
     def check_product_name(self):
@@ -26,7 +26,7 @@ class ProductPage(BasePage):
             EC.visibility_of_element_located(ProductPageLocators.ALERT_WITH_PRODUCT_NAME))
         product_name = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME).get_attribute("textContent")
         product_name_in_cart = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME_IN_CART).get_attribute("textContent")
-        assert product_name in product_name_in_cart, "Product name does not equal with product name in the cart"
+        assert product_name == product_name_in_cart, f"Product name {product_name} does not equal with product name in the cart {product_name_in_cart}"
         print(f"Product name {product_name}, product name in the cart {product_name_in_cart}")
 
 
